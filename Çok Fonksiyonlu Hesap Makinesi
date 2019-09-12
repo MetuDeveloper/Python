@@ -1,0 +1,54 @@
+import math
+""" *********************************************
+Çok fonksiyonlu hesap makinesi programi:
+
+1.Sin
+2.Cos
+3.Log10()
+4.tan
+5.toplama
+6.çıkarma
+7.çarpma
+8.bölme
+
+*********************************************
+"""
+a = int(input("1-10 arasi sayi giriniz: "))
+if a == 1:
+    print("Sin işlemini seçtiniz.")
+    x = int(input("bir derece giriniz: "))
+    print(math.sin(math.radians(x)))
+elif a ==2:
+    print("Cos işlemini seçtiniz.")
+    x = int(input("bir derece giriniz: "))
+    print(math.cos(math.radians(x)))
+elif a ==3:
+    print("log10() işlemini seçtiniz.")
+    x = int(input("bir sayi giriniz: "))
+    print(math.log10(x))
+elif a==4:
+    print("tan işlemini seçtiniz.")
+    x = int(input("bir derece giriniz: "))
+    print(math.tan(math.radians(x)))
+elif a ==5:
+    print("toplama işlemini seçtiniz.")
+    x = int(input("bir sayi giriniz: "))
+    y = int(input("bir sayi daha giriniz: "))
+    print(int(math.fsum([x,y])))
+elif a==6:
+    print("çıkarma işlemini seçtiniz.")
+    x = int(input("bir sayi giriniz: "))
+    y = int(input("bir sayi daha giriniz: "))
+    print(x-y)
+elif a ==7:
+    print("çarpma işlemini seçtiniz.")
+    x = int(input("bir sayi giriniz: "))
+    y = int(input("bir sayi daha giriniz: "))
+    print(x*y)
+elif a ==8:
+    print("bölme işlemini seçtiniz.")
+    x = int(input("bolunen sayiyi giriniz: "))
+    y = int(input("bolen sayiyi giriniz: "))
+    print(int(x / y))
+else:
+    print("yanlis bir islem yaptınız.")
