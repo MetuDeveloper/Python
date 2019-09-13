@@ -1,9 +1,8 @@
 class Çalışan():
-    def __init__(self,isim,maaş,departman):
+    def __init__(self,isim,maaş):
 
         self.isim= isim
         self.maaş = maaş
-        self.departman = departman
 
     def departman_degistir(self,yeni_departman):
         self.departman = yeni_departman
@@ -12,18 +11,17 @@ class Çalışan():
         self.maaş += zam
 
     def bilgileri_göster(self):
-        print("""Personal Bilgileri...\nİsim: {}\nMaaş: {}\nPozisyon: {}\n************************ """.format(self.isim,self.maaş,self.departman))
+        print("""Personal Bilgileri...\nİsim: {}\nMaaş: {}\n************************ """.format(self.isim,self.maaş))
 
 class Yönetici(Çalışan):
-    def zam_yap(self,yonetici_zammi):
-        self.maaş += yonetici_zammi
-    pass
+    def __init__(self,isim,maaş,departman):
+        super().__init__(isim,maaş)
+        self.departman = departman
+    def bilgileri_göster(self):
+        print("""Personal Bilgileri...\nİsim: {}\nMaaş: {}\nPozisyon: {}\n************************ """.format(self.isim, self.maaş,self.departman))
 
-işçi = Çalışan("Okan",3000,"inşaat mühendisi")
+
 müdür = Yönetici("Osman",7000,"proje müdürü")
-
-müdür.departman_degistir("Şantiye Şefi")
-müdür.zam_yap(2000)
-
-işçi.bilgileri_göster()
 müdür.bilgileri_göster()
+işçi = Çalışan("okan",3000)
+işçi.bilgileri_göster()
