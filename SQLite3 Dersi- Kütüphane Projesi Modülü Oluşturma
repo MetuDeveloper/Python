@@ -9,7 +9,7 @@ class Kitap():
         self.tür = tür
         self.baskı = baskı
     def __str__(self):
-        return "Kitap İsmi: {}\nYazar: {]\nYayınevi: {}\nTür: {}\nBaskı: {}\n".format(self.isim,self.yazar,self.yayınevi,self.tür,self.baskı))
+        return "Kitap İsmi: {}\nYazar: {}\nYayınevi: {}\nTür: {}\nBaskı: {}\n".format(self.isim,self.yazar,self.yayınevi,self.tür,self.baskı)
 
 class Kütüphane():
     def __init__(self):
@@ -23,17 +23,17 @@ class Kütüphane():
     def bağlantıyı_kes(self):
         self.bağlantı.close()
     def kitapları_göster(self):
-        sorgu = "Select*From kitaplar"
+        sorgu = "Select * From kitaplar"
         self.cursor.execute(sorgu)
-        self.cursor.fetchall()
+        kitaplar = self.cursor.fetchall()
         if len(kitaplar) ==0:
             print("Kütüphanenizde kitap bulunmamaktadır...")
         else:
             for i in kitaplar:
                 kitap = Kitap(i[0],i[1],i[2],i[3],i[4])
                 print(kitap)
-    def kitap_sorgula(self):
-        sorgu = "Select*From kitaplar isim = ?"
+    def kitap_sorgula(self,isim):
+        sorgu = "Select*From kitaplar where isim = ?"
         self.cursor.execute(sorgu,(isim,))
         kitaplar = self.cursor.fetchall()
         if len(kitaplar) == 0:
@@ -49,7 +49,7 @@ class Kütüphane():
 
     def kitap_sil(self,isim):
         sorgu = "Delete From kitaplar where isim = ?"
-        self.cursor.execute(sorgu,(kitap.isim,))
+        self.cursor.execute(sorgu,(isim,))
         self.bağlantı.commit()
     def baskı_yükselt(self,isim):
         sorgu = "Select*From kitaplar where isim = ?"
@@ -58,14 +58,17 @@ class Kütüphane():
         if len(kitaplar) ==0:
             print("Böyle bir kitap bulunmuyor...")
         else:
-            sorgu = "Select From kitaplar isim = ?"
-            self.cursor.execute(sorgu,(isim,))
-            kitaplar = self.cursor.fetchall()
-            if len(kitaplar) ==0:
-                print("Böyle bir kitap bulunmuyor...")
-            else:
-                baskı = kitaplar[0][4]
-                baskı += 1
-            sorgu2 = "Update kitaplar set baskı = ? where isim=?"
+            baskı = kitaplar[0][4]
+            baskı += 1
+            sorgu2 = "Update kitaplar set baskı = ? where isim = ?"
             self.cursor.execute(sorgu2,(baskı,isim))
             self.bağlantı.commit()
+    def baskı_sayısını_göster(self,isim):
+        sorgu = "Select * From kitaplar where isim = ?"
+        self.cursor.execute(sorgu,(isim,))
+        kitaplar = self.cursor.fetchall()
+        if len(kitaplar) == 0:
+            print("Böyle bir kitap bulunmuyor...")
+        else:
+            kitap = kitaplar[0][4]
+            print(kitap)
