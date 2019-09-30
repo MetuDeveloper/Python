@@ -11,6 +11,8 @@ print("""***************************************
 
 5.Baskı Yükselt
 
+6.Baskı Sayısını Göster
+
 Çıkmak için q'ya basınız.
 ***************************************""")
 kütüphane = Kütüphane()
@@ -35,6 +37,7 @@ while True:
         yeni_kitap = Kitap(isim,yazar,yayınevi,tür,baskı)
         print("Kitap ekleniyor...")
         time.sleep(2)
+        kütüphane.kitap_ekle(yeni_kitap)
         print("Eklendi.")
     elif işlem == "4":
         isim = input("Silmek istenilen kitabın adı: ")
@@ -49,5 +52,10 @@ while True:
         kütüphane.baskı_yükselt(isim)
         time.sleep(2)
         print("İşleminiz gerçekleştirildi.")
+    elif işlem == "6":
+        isim = input("Baskı sayısı sorulan kitap ismi: ")
+        kütüphane.baskı_sayısını_göster(isim)
+        time.sleep(2)
+        print("İşlem tamamlandı.")
     else:
         print("Yanlış bir tuşlama yaptınız...")
