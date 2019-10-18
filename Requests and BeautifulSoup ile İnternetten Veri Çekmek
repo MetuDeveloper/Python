@@ -1,0 +1,8 @@
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://www.isbul.net/ankara-is-ilanlari?k=inşaat%20mühendisi"
+response = requests.get(url)
+html_icerigi = response.content
+soup = BeautifulSoup(html_icerigi,"html.parser")
+print(soup.find_all("div",{"class":"cookieinfo"}))
