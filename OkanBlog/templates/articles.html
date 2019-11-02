@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block okan %}
+<h3>Makaleler</h3>
+<hr>
+{% if articles %}
+<form action="/search" method = "post">
+<input type="text" name="keyword" placeholder="Arama yap">
+<button type="submit" class="btn btn-primary ">Ara</button>
+</form>
+<hr>
+<ul class="list-group">
+  {% for article in articles  %}
+  <li class="list-group-item"><a href="/article/{{article.id}}">{{article.title}}</a></li>
+  
+  {% endfor %}
+
+</ul>
+
+{% else %}
+<div class = "alert alert-danger">Bu blokta henüz makale kayıtlı değil.</div>
+{% endif %}
+
+{% endblock okan %}
+<h3>Makaleler</h3>
+<hr>

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block okan %}
+<div class="jumbotron text-center">
+<h4>Okan Kandemir'in sitesine Hoşgeldiniz</h4> 
+<p>Burada yararlı paylaşımlarda bulunabilir , bilgi alışverişi yapabilirsiniz.</p>
+</div>
+<h5>Aile Üyeleri</h5>
+<hr>
+{% for satır in dict  %}
+<li>İsim: {{satır.isim}}</li><li> Meslek: {{satır.meslek}}</li> <li>Yaş: {{satır.yaş}}</li>
+<hr>
+{% endfor %}
+
+{% endblock okan %}
